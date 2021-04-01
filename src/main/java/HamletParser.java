@@ -40,6 +40,7 @@ public class HamletParser {
 
     public Boolean findHamlet(String string){
         Pattern pattern = Pattern.compile("\\b[hH][aA][mM][lL][eE][tT]");
+        // could also do: Pattern pattern = Pattern.compile("Hamlet",Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(string);
         boolean matchFound = matcher.find();
         return matchFound;
@@ -47,6 +48,7 @@ public class HamletParser {
 
     public Boolean findHoratio(String string){
         Pattern pattern = Pattern.compile("\\b[hH][oO][rR][aA][Tt][iI][oO]");
+        // could also do: Pattern pattern = Pattern.compile("Horatio",Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(string);
         boolean matchFound = matcher.find();
         return matchFound;
@@ -54,7 +56,6 @@ public class HamletParser {
 
     public String replaceHamletWithLeon(){
         Pattern pattern = Pattern.compile("\\b[hH][aA][mM][lL][eE][tT]");
-        // could also do: Pattern pattern = Pattern.compile("Hamlet",Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(hamletData);
         String newPoem = hamletData;
 
