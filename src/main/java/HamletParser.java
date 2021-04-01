@@ -1,6 +1,8 @@
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by thook on 10/7/15.
@@ -34,6 +36,43 @@ public class HamletParser {
 
     public String getHamletData(){
         return hamletData;
+    }
+
+    public Boolean findHamlet(String string){
+        Pattern pattern = Pattern.compile("\\b[hH][aA][mM][lL][eE][tT]\\b");
+        Matcher matcher = pattern.matcher(string);
+        boolean matchFound = matcher.find();
+        return matchFound;
+    }
+
+    public Boolean findHoratio(String string){
+        Pattern pattern = Pattern.compile("\\b[hH][oO][rR][aA][Tt][iI][oO]\\b");
+        Matcher matcher = pattern.matcher(string);
+        boolean matchFound = matcher.find();
+        return matchFound;
+    }
+
+    public String replaceHamletWithLeon(){
+        Pattern pattern = Pattern.compile("\\b[hH][aA][mM][lL][eE][tT]\\b");
+        // could also do: Pattern pattern = Pattern.compile("Hamlet",Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(hamletData);
+        String newPoem = hamletData;
+
+        if(findHamlet(newPoem)){
+            newPoem = matcher.replaceAll("Leon");
+        }
+        return newPoem;
+    }
+
+    public String replaceHoratioWithTariq(){
+        Pattern pattern = Pattern.compile("\\b[hH][oO][rR][aA][Tt][iI][oO]\\b");
+        Matcher matcher = pattern.matcher(hamletData);
+        String newPoem = hamletData;
+
+        if(findHamlet(newPoem)){
+            newPoem = matcher.replaceAll("Tariq");
+        }
+        return newPoem;
     }
 
 }
